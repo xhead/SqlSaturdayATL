@@ -1,0 +1,41 @@
+{
+	"name": "CsvBlobStorage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FirstRowAsHeader": {
+				"type": "bool",
+				"defaultValue": true
+			},
+			"Container": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Metadata Driven"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": {
+					"value": "@dataset().Container",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": {
+				"value": "@dataset().FirstRowAsHeader",
+				"type": "Expression"
+			},
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

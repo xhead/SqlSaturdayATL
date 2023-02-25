@@ -1,0 +1,9 @@
+{
+	"name": "ADF-MetadataDriven-Dev",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1109104d-96d1-4baa-9217-11c776c1a2e8",
+		"tenantId": "f5e8862b-5513-407a-9f7d-b67b33a9001a"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "AdventureWorks",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Adventureworks",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Metadata Driven"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

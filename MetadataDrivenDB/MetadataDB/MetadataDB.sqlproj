@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MetadataDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{b339c9f2-c328-4f42-bc6c-2bdfd43e4415}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MetadataDB</RootNamespace>
+    <AssemblyName>MetadataDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
+    <QueryStoreDesiredState>ReadOnly</QueryStoreDesiredState>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Staging\" />
+    <Folder Include="Staging\Tables\" />
+    <Folder Include="raw\" />
+    <Folder Include="raw\Tables\" />
+    <Folder Include="ETL\" />
+    <Folder Include="ETL\Tables\" />
+    <Folder Include="dw\" />
+    <Folder Include="dw\Tables\" />
+    <Folder Include="Staging\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="Staging\Stored Procedures\" />
+    <Folder Include="ETL\Stored Procedures\" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Staging\Tables\Product.sql" />
+    <Build Include="raw\Tables\Project.sql" />
+    <Build Include="raw\Tables\Department.sql" />
+    <Build Include="ETL\Tables\DataFactoryTask.sql" />
+    <Build Include="dw\Tables\Department.sql" />
+    <Build Include="dw\Tables\Product.sql" />
+    <Build Include="dw\Tables\Project.sql" />
+    <Build Include="Staging\Views\Project.sql" />
+    <Build Include="Staging\Views\Department.sql" />
+    <Build Include="Security\adf-metadatadriven-dev.sql" />
+    <Build Include="Staging\Stored Procedures\MergeProject.sql" />
+    <Build Include="Staging\Stored Procedures\MergeDepartment.sql" />
+    <Build Include="Staging\Stored Procedures\MergeProduct.sql" />
+    <Build Include="ETL\Stored Procedures\GetDataFactoryTasks.sql" />
+    <Build Include="Security\Staging.sql" />
+    <Build Include="Security\raw.sql" />
+    <Build Include="Security\ETL.sql" />
+    <Build Include="Security\dw.sql" />
+    <Build Include="Staging\Tables\Sales.sql" />
+    <Build Include="dw\Tables\Sales.sql" />
+    <Build Include="Staging\Stored Procedures\MergeSales.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\BackfillFactoryTasks.sql" />
+    <None Include="CompareToDevscmp.scmp" />
+    <None Include="MetadataDB.publish.xml" />
+  </ItemGroup>
+</Project>

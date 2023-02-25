@@ -1,0 +1,288 @@
+{
+	"name": "CsvProject",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Old Style"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Project.csv",
+				"container": "replicon"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ProjectId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectGuid",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Code",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			},
+			{
+				"name": "ClientId",
+				"type": "String"
+			},
+			{
+				"name": "ClientName",
+				"type": "String"
+			},
+			{
+				"name": "ClientCode",
+				"type": "String"
+			},
+			{
+				"name": "ProjectManagerUserId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectManagerUserName",
+				"type": "String"
+			},
+			{
+				"name": "IsProjectManagerApprovalRequired",
+				"type": "String"
+			},
+			{
+				"name": "StartDate",
+				"type": "String"
+			},
+			{
+				"name": "EndDate",
+				"type": "String"
+			},
+			{
+				"name": "ProgramId",
+				"type": "String"
+			},
+			{
+				"name": "ProgramName",
+				"type": "String"
+			},
+			{
+				"name": "BillingType",
+				"type": "String"
+			},
+			{
+				"name": "BillingContractType",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidAmount",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidAmountBaseCurrency",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "FixedBidFrequency",
+				"type": "String"
+			},
+			{
+				"name": "TimeEntryCapPercent",
+				"type": "String"
+			},
+			{
+				"name": "PercentComplete",
+				"type": "String"
+			},
+			{
+				"name": "IsTimeEntryAllowed",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedDurationSeconds",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedDurationHours",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedExpenses",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedExpensesBaseCurrency",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedExpensesCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedExpensesCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedExpensesCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedCost",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedCostBaseCurrency",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedCostCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedCostCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "EstimatedCostCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "TimeAndExpenseEntryType",
+				"type": "String"
+			},
+			{
+				"name": "EstimationMode",
+				"type": "String"
+			},
+			{
+				"name": "BillingRateFrequencyName",
+				"type": "String"
+			},
+			{
+				"name": "BillingRateFrequencyDurationSeconds",
+				"type": "String"
+			},
+			{
+				"name": "BillingRateFrequencyDurationHours",
+				"type": "String"
+			},
+			{
+				"name": "DefaultBillingCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "DefaultBillingCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "DefaultBillingCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "DataAllocatedToClientsBy",
+				"type": "String"
+			},
+			{
+				"name": "TotalEstimatedContractAmount",
+				"type": "String"
+			},
+			{
+				"name": "TotalEstimatedContractAmountBaseCurrency",
+				"type": "String"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "ProjectStatusLabelName",
+				"type": "String"
+			},
+			{
+				"name": "ProjectDepartmentId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectDepartmentName",
+				"type": "String"
+			},
+			{
+				"name": "ProjectEmployeeTypeId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectEmployeeTypeName",
+				"type": "String"
+			},
+			{
+				"name": "RevenueContractId",
+				"type": "String"
+			},
+			{
+				"name": "RevenueContractName",
+				"type": "String"
+			},
+			{
+				"name": "ProjectInvoiceCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "ProjectInvoiceCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "ProjectInvoiceCurrencySymbol",
+				"type": "String"
+			},
+			{
+				"name": "BaseCurrencyId",
+				"type": "String"
+			},
+			{
+				"name": "BaseCurrencyName",
+				"type": "String"
+			},
+			{
+				"name": "BaseCurrencySymbol",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

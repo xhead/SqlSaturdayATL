@@ -1,0 +1,122 @@
+{
+	"name": "Main pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load Blob Dims",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load CSV from Blob",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DataSource": "CsvBlob-Dims",
+						"OptionalTaskKeyList": {
+							"value": "@pipeline().parameters.OptionalTaskKeyList",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load AdventureWorks Dims",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load from AdventureWorks",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DataSource": "AdventureWorks-Dims",
+						"OptionalTaskKeyList": {
+							"value": "@pipeline().parameters.OptionalTaskKeyList",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load Blob Facts",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Load AdventureWorks Dims",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Load Blob Dims",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load CSV from Blob",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DataSource": "CsvBlob-Facts",
+						"OptionalTaskKeyList": {
+							"value": "@pipeline().parameters.OptionalTaskKeyList",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Load AdventureWorks Facts",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Load Blob Dims",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Load AdventureWorks Dims",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Load from AdventureWorks",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"DataSource": "AdventureWorks-Facts",
+						"OptionalTaskKeyList": {
+							"value": "@pipeline().parameters.OptionalTaskKeyList",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"OptionalTaskKeyList": {
+				"type": "string",
+				"defaultValue": "all"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-02-20T21:00:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

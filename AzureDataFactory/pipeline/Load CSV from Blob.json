@@ -1,0 +1,203 @@
+{
+	"name": "Load CSV from Blob",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Data Factory Tasks",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "ETL.GetDataFactoryTasks",
+						"storedProcedureParameters": {
+							"DataSource": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.DataSource",
+									"type": "Expression"
+								}
+							},
+							"OptionalTaskKeyList": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.OptionalTaskKeyList",
+									"type": "Expression"
+								}
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DataWarehouse",
+						"type": "DatasetReference",
+						"parameters": {
+							"SchemaName": "ignored",
+							"TableName": "ignored"
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "For Each Task",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Data Factory Tasks",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Data Factory Tasks').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy to Staging",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFileName": {
+											"value": "@item().SourceQuery",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "@{item().TruncateStatement}",
+										"type": "Expression"
+									},
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "CsvBlobStorage",
+									"type": "DatasetReference",
+									"parameters": {
+										"FirstRowAsHeader": true,
+										"Container": "replicon"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DataWarehouse",
+									"type": "DatasetReference",
+									"parameters": {
+										"SchemaName": {
+											"value": "@item().TargetSchema",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@item().TargetTable",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "Execute Staging Merge",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Copy to Staging",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": {
+									"value": "@item().MergeProc",
+									"type": "Expression"
+								},
+								"storedProcedureParameters": {
+									"DataFactoryTaskKey": {
+										"value": {
+											"value": "@item().DataFactoryTaskKey",
+											"type": "Expression"
+										},
+										"type": "Int32"
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "DataWarehouse",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"DataSource": {
+				"type": "string"
+			},
+			"OptionalTaskKeyList": {
+				"type": "string",
+				"defaultValue": "all"
+			}
+		},
+		"folder": {
+			"name": "Metadata Driven"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-02-20T20:05:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

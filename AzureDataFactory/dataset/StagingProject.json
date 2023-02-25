@@ -1,0 +1,281 @@
+{
+	"name": "StagingProject",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataWarehouse",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Old Style"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProjectId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectGuid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ClientId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ClientName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ClientCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectManagerUserId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectManagerUserName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IsProjectManagerApprovalRequired",
+				"type": "nvarchar"
+			},
+			{
+				"name": "StartDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EndDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProgramId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProgramName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillingType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillingContractType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidAmount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidAmountBaseCurrency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FixedBidFrequency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TimeEntryCapPercent",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PercentComplete",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IsTimeEntryAllowed",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedDurationSeconds",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedDurationHours",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedExpenses",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedExpensesBaseCurrency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedExpensesCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedExpensesCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedExpensesCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedCost",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedCostBaseCurrency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedCostCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedCostCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimatedCostCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TimeAndExpenseEntryType",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EstimationMode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillingRateFrequencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillingRateFrequencyDurationSeconds",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BillingRateFrequencyDurationHours",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DefaultBillingCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DefaultBillingCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DefaultBillingCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DataAllocatedToClientsBy",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalEstimatedContractAmount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalEstimatedContractAmountBaseCurrency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalEstimatedContractCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectStatusLabelName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectDepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectDepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectEmployeeTypeId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectEmployeeTypeName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RevenueContractId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RevenueContractName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectInvoiceCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectInvoiceCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ProjectInvoiceCurrencySymbol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseCurrencyId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseCurrencyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BaseCurrencySymbol",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Staging",
+			"table": "Project"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

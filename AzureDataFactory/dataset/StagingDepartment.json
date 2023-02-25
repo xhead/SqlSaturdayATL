@@ -1,0 +1,141 @@
+{
+	"name": "StagingDepartment",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DataWarehouse",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Old Style"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ParentDepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Slug",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Comments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IsEnabled",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FullPathName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level1DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level1DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level1DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level2DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level2DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level2DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level3DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level3DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level3DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level4DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level4DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level4DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level5DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level5DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level5DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level6DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level6DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level6DepartmentCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level7DepartmentId",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level7DepartmentName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level7DepartmentCode",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "Staging",
+			"table": "Department"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

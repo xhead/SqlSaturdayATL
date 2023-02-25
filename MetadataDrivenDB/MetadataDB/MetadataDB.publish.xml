@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>Metadata-Dev</TargetDatabaseName>
+    <DeployScriptFileName>MetadataDB.sql</DeployScriptFileName>
+    <TargetConnectionString>Data Source=imaginet-bi.database.windows.net;Persist Security Info=True;User ID=MikeDSA;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <DatabaseEdition>Basic</DatabaseEdition>
+    <DatabaseServiceObjective>Basic</DatabaseServiceObjective>
+    <DatabaseMaximumSize>2</DatabaseMaximumSize>
+    <GenerateSmartDefaults>True</GenerateSmartDefaults>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <DoNotDropUsers>True</DoNotDropUsers>
+    <DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+    <IgnoreColumnCollation>True</IgnoreColumnCollation>
+    <IgnoreColumnOrder>True</IgnoreColumnOrder>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+  </PropertyGroup>
+</Project>
